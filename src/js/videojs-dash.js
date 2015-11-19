@@ -44,6 +44,8 @@
     this.tech_ = tech;
     this.el_ = tech.el();
     this.elParent_ = this.el_.parentNode;
+    this.player = tech.player();
+    this.player.dash = {};
 
     // Do nothing if the src is falsey
     if (!source.src) {
@@ -72,7 +74,7 @@
     Html5DashJS.context_ = Html5DashJS.context_ || new Dash.di.DashContext();
 
     // But make a fresh MediaPlayer each time the sourceHandler is used
-    this.mediaPlayer_ = new MediaPlayer(Html5DashJS.context_);
+    this.player.dash.mediaPlayer = this.mediaPlayer_ = new MediaPlayer(Html5DashJS.context_);
 
     // Must run controller before these two lines or else there is no
     // element to bind to.
